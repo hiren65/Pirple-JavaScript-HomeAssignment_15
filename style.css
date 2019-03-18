@@ -61,7 +61,7 @@ h2{
     grid-column: 2/3;
     border: #0b1163 solid 1px;
     margin-top: 0;
-    background-color: silver;
+    background-color: #dde7eb;
 }
 .leftB{
     display: block;
@@ -70,4 +70,21 @@ h2{
 }
 .leftB div{
     padding: 5px;
+}
+.rightB{
+    display: block;
+    float: right;
+    margin-left: 5px;
+
+}
+.rightB div{
+    padding: 5px;
+}
+.capital{
+    color: darkgreen;
+    font-weight: bold;
+}
+.region{
+    color: #fc7859;
+    font-weight: 500;
 }

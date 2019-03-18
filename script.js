@@ -48,5 +48,11 @@ function createGrid(id,arr,i){
             <div>Currency ${arr[i]["currencies"][0].code}</div>
             <div>Area ${arr[i]["area"]}</div>
             </div>
+            <div class="rightB">
+            <div>Population ${arr[i]["population"]}</div>
+            <div>Native Name ${arr[i]["nativeName"]}</div>
+            <div>Capital <span class="capital"> ${arr[i]["capital"]}</span></div>
+            <div>Region <span class="region"> ${arr[i]["region"]}</span></div>
+            </div>
     `;
 }
