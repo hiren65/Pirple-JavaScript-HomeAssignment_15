@@ -49,7 +49,7 @@ function createGrid(id,arr,i){
     bb.appendChild(cc);
     //cc.innerText = arr[0].name;
     cc.innerHTML = `
-            <h2>Country ${arr[i].name}</h2>
+            <h2><span class="countryHeading">Country</span> ${arr[i].name}</h2>
             <div class="flag"><img class="flagImg" src=${arr[i]["flag"]} alt="Flag"></div>
             <div class="leftB">
             <div><span class="spTi"> Language</span> ${arr[i]["languages"][0].name}</div>
@@ -60,8 +60,8 @@ function createGrid(id,arr,i){
             <div class="rightB">
             <div><span class="spTi">Population</span> ${arr[i]["population"]}</div>
             <div><span class="spTi">Native Name</span> ${arr[i]["nativeName"]}</div>
-            <div><span class="spTi">Capital </span> class="capital"> ${arr[i]["capital"]}</div>
-            <div><span class="spTi">Region </span> class="region"> ${arr[i]["region"]}</div>
+            <div><span class="spTi">Capital </span>  ${arr[i]["capital"]}</div>
+            <div><span class="spTi">Region </span>  ${arr[i]["region"]}</div>
             </div>
     `;
 }
