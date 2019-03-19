@@ -7,7 +7,7 @@
 
 html{
 
-    background-color: blanchedalmond;
+    background-color: rgb(11, 17, 99);
     width: 70%;
     height: 100%;
     margin-left: auto;
@@ -42,17 +42,18 @@ header h1{
     background-color: gold;
 }
 button{
-
+   color: #dde7eb;
 }
 #fetchBtn{
     margin: 5px 5px 5px 5px;
-
+    cursor: pointer;
     width: 75%;
     height: 30px;
+    background-color: #306ed5;
 }
 h2{
     text-align: center;
-    color: red;
+    color: #1411ff;
     margin-left: auto;margin-right: auto;
     padding: 3px;
     background-color: #a0ace2;
@@ -61,7 +62,7 @@ h2{
     grid-column: 2/3;
     border: #0b1163 solid 1px;
     margin-top: 0;
-    background-color: #dde7eb;
+    background-color: rgba(245, 233, 222, 0.58);
 }
 .leftB{
     display: block;
@@ -87,4 +88,35 @@ h2{
 .region{
     color: #fc7859;
     font-weight: 500;
+}
+#input1{
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+}
+#searchBtn{
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    width: 35%;
+    height: 30px;
+    background-color: #306ed5;
+}
+.flag{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 60%;
+    /*border: #0b1163 1px solid;*/
+}
+.flagImg{
+    width: 200px;
+    height: 100px;
+    margin: 10px auto 10px auto;
+    display: block;
+    border: black 1px solid;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.spTi{
+    color: #214f87;
+    font-weight: bold;
 }

@@ -10,20 +10,27 @@
        try using your new website with your internet connection turned off!
 */
 
+let checkData = [];
 let fetchApi = document.getElementById("fetchBtn");
 
 //https://trefle.io/some-url?token=ak9DWGxJYmNsNXRqRHZPT3M0V0twZz09
 //https://developer.napster.com/examples
 fetchApi.addEventListener("click",getDataFromApi);
 function getDataFromApi() {
+    if (checkData.length>0){
+        removeDivWithClass("box000");
+        checkData = [];
+        //return;
+    }
     fetch("https://restcountries.eu/rest/v2/all")
         .then(function (resp) {
             return resp.json()
         })
         .then(function (data) {
+            console.log("type "+typeof data +"and array "+Array.isArray(data));
             console.log(data[0]);
-            console.log(data[0].name);
-
+            //console.log(data[0].name);
+            checkData = data;
             for (let i=0;i<data.length;i++){
                 createGrid("b",data,i);
             }
@@ -33,6 +40,7 @@ function getDataFromApi() {
         })
 }
 function createGrid(id,arr,i){
+
     let bb = document.getElementById("wrapper");
     let cc = document.createElement("div");
     cc.setAttribute("id",id+i+2);
@@ -42,17 +50,58 @@ function createGrid(id,arr,i){
     //cc.innerText = arr[0].name;
     cc.innerHTML = `
             <h2>Country ${arr[i].name}</h2>
+            <div class="flag"><img class="flagImg" src=${arr[i]["flag"]} alt="Flag"></div>
             <div class="leftB">
-            <div>Language ${arr[i]["languages"][0].name}</div>
-            <div>Short Name ${arr[i]["altSpellings"][0]}</div>
-            <div>Currency ${arr[i]["currencies"][0].code}</div>
-            <div>Area ${arr[i]["area"]}</div>
+            <div><span class="spTi"> Language</span> ${arr[i]["languages"][0].name}</div>
+            <div><span class="spTi"> Short Name</span> ${arr[i]["altSpellings"][0]}</div>
+            <div><span class="spTi"> Currency</span> ${arr[i]["currencies"][0].code}</div>
+            <div><span class="spTi"> Area</span> ${arr[i]["area"]} Square Kilometer</div>
             </div>
             <div class="rightB">
-            <div>Population ${arr[i]["population"]}</div>
-            <div>Native Name ${arr[i]["nativeName"]}</div>
-            <div>Capital <span class="capital"> ${arr[i]["capital"]}</span></div>
-            <div>Region <span class="region"> ${arr[i]["region"]}</span></div>
+            <div><span class="spTi">Population</span> ${arr[i]["population"]}</div>
+            <div><span class="spTi">Native Name</span> ${arr[i]["nativeName"]}</div>
+            <div><span class="spTi">Capital </span> class="capital"> ${arr[i]["capital"]}</div>
+            <div><span class="spTi">Region </span> class="region"> ${arr[i]["region"]}</div>
             </div>
     `;
+}
+function removeDivWithClass(myClass) {
+    let tt = document.getElementsByClassName(myClass);
+    while (tt.length > 0) tt[0].remove();
+}
+//////button Search
+let search = document.getElementById("searchBtn");
+search.addEventListener("click",searchAction);
+function searchAction() {
+
+    let inputValue = document.getElementById("input1").value;
+    let text = inputValue;
+    if (text === ""){
+        alert("No data input!!");return;
+    }
+
+    if (checkData.length>0){
+        removeDivWithClass("box000");
+        checkData = [];
+
+    }
+
+    fetch(`https://restcountries.eu/rest/v2/name/${text}`)
+        .then(function (resp) {
+            return resp.json()
+        })
+        .then(function (data) {
+            console.log("type "+typeof data +"and array "+Array.isArray(data));
+            //console.log(data[0]);
+            //console.log(data[0].name);
+            checkData = data;
+            for (let i=0;i<data.length;i++){
+                createGrid("b",data,i);
+            }
+
+        })
+        .catch(function (err) {
+            console.log("ERR "+err)
+        })
+
 }
