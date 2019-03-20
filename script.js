@@ -69,7 +69,7 @@ function removeDivWithClass(myClass) {
     let tt = document.getElementsByClassName(myClass);
     while (tt.length > 0) tt[0].remove();
 }
-//////button Search
+//////button Search //////////////////
 let search = document.getElementById("searchBtn");
 search.addEventListener("click",searchAction);
 function searchAction() {
@@ -104,4 +104,38 @@ function searchAction() {
             console.log("ERR "+err)
         })
 
+}
+///////////////////selection////////////////
+let selection = document.getElementById("select");
+
+
+let region = document.getElementById("regional");
+region.addEventListener("click",regionCountry);
+function regionCountry() {
+    if (checkData.length>0){
+        removeDivWithClass("box000");
+        checkData = [];
+    }
+    //fetch(`https://restcountries.eu/rest/v2/region/asia`)
+    fetch("https://restcountries.eu/rest/v2/all")
+        .then(function (resp) {
+            return resp.json()
+        })
+        .then(function (data) {
+            //console.log("type "+typeof data +"and array "+Array.isArray(data));
+            console.log(data[0]);
+            console.log("redion "+  data[0].region);
+            let text = document.getElementById("select");
+            console.log("inner text "+ text.value);
+            checkData = data;
+            for (let i=0;i<data.length;i++){
+                if (data[i].region === text.value){
+                    createGrid("b",data,i);
+                }
+
+            }
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
 }

@@ -45,11 +45,12 @@ button{
    color: #dde7eb;
 }
 #fetchBtn{
-    margin: 5px 5px 5px 5px;
+    margin: 5px 2% 5px 2%;
     cursor: pointer;
-    width: 75%;
+    width: 96%;
     height: 30px;
     background-color: #306ed5;
+    font-size: 0.8em;
 }
 h2{
     text-align: center;
@@ -97,9 +98,10 @@ h2{
 #searchBtn{
     margin: 5px 5px 5px 5px;
     cursor: pointer;
-    width: 35%;
+    width: 50%;
     height: 30px;
     background-color: #306ed5;
+    font-size: 0.8em;
 }
 .flag{
     margin-left: auto;
@@ -123,3 +125,17 @@ h2{
 .countryHeading{
     color: gold;
 }
+#select{
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+}
+#regional{
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    width: 50%;
+    height: 30px;
+    background-color: #306ed5;
+    padding: 3px;
+    font-size: 0.8em;
+ }
