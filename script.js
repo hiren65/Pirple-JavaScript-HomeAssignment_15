@@ -34,9 +34,11 @@ function getDataFromApi() {
             for (let i=0;i<data.length;i++){
                 createGrid("b",data,i);
             }
+
         })
         .catch(function (err) {
             console.log(err)
+            alert( "sorry, we couldn't access the API");
         })
 }
 function createGrid(id,arr,i){
@@ -87,7 +89,16 @@ function searchAction() {
     }
 
     fetch(`https://restcountries.eu/rest/v2/name/${text}`)
+
         .then(function (resp) {
+                if (resp["status"] === 404){
+                    alert("search not found ");
+                    return resp
+                }
+
+                console.log("not found status " + resp["status"]);
+
+
             return resp.json()
         })
         .then(function (data) {
@@ -101,7 +112,8 @@ function searchAction() {
 
         })
         .catch(function (err) {
-            console.log("ERR "+err)
+            console.log("ERR  sorry, we couldn't access the API "+err);
+            alert( "sorry, we couldn't access the API");
         })
 
 }
@@ -137,5 +149,6 @@ function regionCountry() {
         })
         .catch(function (err) {
             console.log(err)
+            alert( "sorry, we couldn't access the API");
         })
 }
